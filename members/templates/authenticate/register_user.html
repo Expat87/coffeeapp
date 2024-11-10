@@ -1,0 +1,40 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+{% if form.errors %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		There was an error with your form
+        <ul>
+            {% for field, errors in form.errors.items %}
+                <li>{{ errors|striptags }}</li>
+            {% endfor %}
+        </ul>
+	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+	{% endif %}
+<!--<div class="col-md-6 offset-md-3">-->
+
+
+<div class="shadow p-4 mb-5 bg-body rounded">
+<h1> Register New Coffee Drinker </h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            {{ form.username }}
+            <small class="form-text text-muted">Required</small>
+        </div>
+        <div class="mb-3">
+            <label for="password1" class="form-label">Password:</label>
+            {{ form.password1 }}
+            <small class="form-text text-muted">Your password must contain at least 6 characters.</small>
+        </div>
+        <div class="mb-3">
+            <label for="password2" class="form-label">Password confirmation:</label>
+            {{ form.password2 }}
+            <small class="form-text text-muted">Enter the same password as before, for verification.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+{% endblock %}

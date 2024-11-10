@@ -1,0 +1,42 @@
+{% block content %}
+<div class="container">
+        <div class="mb-3">
+            <label for="coffeeshop" class="form-label">Coffee Shop:</label>
+            {{ form.coffeeshop }}
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label for="size" class="form-label">Drink Size / Type:</label>
+                {{ form.size }}
+            </div>
+            <div class="col-md-4">
+                <label for="price" class="form-label">Price:</label>
+                {{ form.price }}
+            </div>
+            <div class="col-md-4">
+				<label for="rating" class="form-label">Rating:</label>
+				{{ form.rating }}
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label"></label>
+            {{ form.description }}
+        </div>
+{% endblock %}
+<!--	<p>Coffee Shop:
+	  {{form.coffeeshop}}</p>
+
+	<p><div class="row mb-3">
+	  <div class="col-md-6">
+	    Drink Size / Type:</br>
+	  {{form.size}}
+	  </div>
+	  <div class="col-md-6">
+	    Price:</br>
+	{{form.price}}	  </div>
+	</div></p>
+		<p>Rating:</br>
+	  {{form.rating}}</p>
+	<p>What did you think?:</br>
+	  {{form.description}}</p>-->
+

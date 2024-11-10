@@ -1,0 +1,29 @@
+{% extends 'website/base.html' %}
+{% block content %}
+<h1 class="display-3 fw-bold">Reviews for {{coffeeshop}}</h1>
+<h3 class="fw-normal text-muted mb-3">Helping to find the best coffee in Perth</h3></br>
+<br/>
+{%if reviews%}
+<div class="container mt-4">
+    <div class="row">
+        {% for rating in reviews %}
+        
+            <div class="card mb-4">
+                <div class="card-body">                    
+					<h5 class="card-text"><em>{{rating.description}}</em></h5>
+					<h6 class="card-text"> <strong>{{rating.rating}} out of 10</strong></h6>
+					<p class="card-text">Review by {{rating.created_by}} on {{rating.created_at|date }}</p>
+					{% if user == rating.created_by%}
+					<a href="{% url 'edit_rating' rating.id %}">Edit</a>					
+					{% else %}
+					{%endif%}
+                </div>
+            </div>
+        {% endfor %}		
+    </div>
+</div>
+{%else%}
+<h5>No reviews yet - get drinking!</h5>
+{%endif%}
+	<a href="{%url 'home'%}" class="btn btn-outline-primary">Back</a>
+{% endblock %}

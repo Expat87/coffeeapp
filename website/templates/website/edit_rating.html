@@ -1,0 +1,17 @@
+{% extends 'website/base.html' %}
+{% block content %}
+
+<div class="shadow p-4 mb-5 bg-body rounded">
+<h1 class="display-3 fw-bold">Edit Review</h1>
+	</br></br>
+	<form action = "" method = POST>
+		{% csrf_token %}
+		{%include 'website/rating_form.html'%}
+		<p>
+		<input type = "submit" value = "Save" class="btn btn-outline-primary">
+		<a href="{%url 'delete_rating' rating.id%}" class="btn btn-outline-danger">Delete</a>
+		<a href="{%url 'my_ratings'%}" class="btn btn-outline-primary">Back</a>
+		</p>
+	</form>
+</div>
+{% endblock %}

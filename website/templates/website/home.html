@@ -1,0 +1,49 @@
+{% extends 'website/base.html' %}
+{% block content %}
+<style>
+    .content-section {
+        position: sticky;
+        top: 20px;
+    }
+    .row.align-items-center {
+        align-items: center;
+    }
+</style>
+
+<br>
+<div class="container mt-4">
+    <div class="row align-items-center">
+        <div class="col-md-8">
+            <h1 class="display-3 fw-bold">Coffee for engineers</h1>
+            <h3 class="fw-normal text-muted mb-3">Help to find the best coffee in Perth</h3><br>
+        </div>
+        <div class="col-md-4">
+            <div class="content-section">
+                <h3>Next Event</h3>
+				{%if next_event %}
+                <p class='text-muted'>Join us for coffee at on {{next_event.event_date}}</br>
+				at <strong><a href="{% url 'view_reviews' next_event.coffeeshop.id %}">{{ next_event.coffeeshop }}</a> - {{next_event.coffeeshop.coffeeshop_address}}</strong></br>
+				{{next_event.details}}</p>
+				{%else%}
+				<p class='text-muted'>Not booked yet - watch this space</strong></br>
+				{%endif%}
+               </div>
+        </div>
+    </div></br></br>
+    <div class="row">
+        {% for shop in coffeeshop_list %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title"><a href="{% url 'view_reviews' shop.id %}">{{ shop.coffeeshop_name }}</a></h4>
+                    <h6 class="card-subtitle">{{ shop.coffeeshop_address }}</h6>
+                    <p class="card-text"><em>{{ shop.coffeeshop_tag }}</em></p>
+                    <p class="card-link">Ave ${{ shop.average_price|default:"--" }} / Rating: {{ shop.average_rating|default:"No ratings yet" }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

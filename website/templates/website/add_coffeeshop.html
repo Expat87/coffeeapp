@@ -1,0 +1,17 @@
+{% extends 'website/base.html' %}
+{% block content %}
+<div class="shadow p-4 mb-5 bg-body rounded">
+<center>
+<h1 class="display-3 fw-bold">Add New Coffee Shop</h1>
+<h3 class="fw-normal text-muted mb-3">Help find the best coffee in Perth</h3></br>
+
+  </br></br>
+  <form action = "" method = POST>
+	{% csrf_token %}
+	{{ form.as_p}}
+	<input type = "submit" value = "Submit" class="btn btn-outline-primary">
+	<a href="{%url 'home'%}" class="btn btn-outline-primary">Back</a>
+  </form>
+</center>
+</div>
+{% endblock %}
